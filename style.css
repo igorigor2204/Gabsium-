@@ -1,0 +1,407 @@
+
+:root {
+  --fundo: #faf7f2;
+  --lilas: #8b75b7;
+  --lilas-claro: #eee7fa;
+  --texto: #393044;
+  --suave: #82798b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.laboratorio {
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+  animation: aparecer 1s ease both;
+}
+
+.selo {
+  display: inline-block;
+  padding: 8px 13px;
+  border: 1px solid #ded2f0;
+  border-radius: 30px;
+  color: var(--lilas);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.frasco {
+  width: 110px;
+  height: 110px;
+  margin: 32px auto 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 32px;
+  background: var(--lilas-claro);
+  font-size: 52px;
+  transform: rotate(-5deg);
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(32px, 9vw, 43px);
+  letter-spacing: -1.5px;
+}
+
+h1 span {
+  color: var(--lilas);
+}
+
+.descricao {
+  max-width: 340px;
+  margin: 16px auto 25px;
+  color: var(--suave);
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+button {
+  border: 0;
+  border-radius: 15px;
+  padding: 15px 22px;
+  background: var(--lilas);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 22px #8b75b733;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.rodape {
+  margin-top: 30px;
+  color: #a39aa9;
+  font-size: 12px;
+}
+
+.oculto {
+  display: none;
+}
+
+.cartao {
+  margin-top: 25px;
+  padding: 25px;
+  border: 1px solid #e7deef;
+  border-radius: 22px;
+  background: #ffffffb8;
+  line-height: 1.8;
+}
+
+.cartao p {
+  color: var(--suave);
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.cartao-interativo {
+  padding: 14px 6px;
+  border: 1px solid #e7deef;
+  border-radius: 16px;
+  background: white;
+  color: var(--texto);
+  box-shadow: none;
+  font-size: 13px;
+}
+
+.cartao-interativo.ativo {
+  background: var(--lilas-claro);
+  border-color: var(--lilas);
+}
+
+.detalhe {
+  min-height: 90px;
+  margin: 14px 0;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--lilas-claro);
+  line-height: 1.7;
+}
+
+.detalhe p {
+  margin: 0;
+  color: var(--texto);
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+.detalhe h3 {
+  margin: 0 0 10px;
+  color: var(--lilas);
+  font-size: 18px;
+}
+
+.detalhe p {
+  margin: 0 0 12px;
+  color: var(--texto);
+}
+
+.detalhe small {
+  color: var(--suave);
+  font-size: 12px;
+}
+
+
+.area-secreta {
+  margin-top: 16px;
+  padding: 20px;
+  border: 1px dashed var(--lilas);
+  border-radius: 20px;
+  background: #ffffffb8;
+  animation: aparecer 0.5s ease both;
+}
+
+.area-secreta p {
+  color: var(--suave);
+  line-height: 1.7;
+}
+
+.revelacao {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--lilas-claro);
+  line-height: 1.8;
+  animation: aparecer 0.6s ease both;
+}
+
+.revelacao p {
+  margin-bottom: 0;
+  color: var(--texto);
+}
+
+
+/* Cartão secreto */
+
+.area-secreta {
+  border: 1px solid #ded2f0;
+  box-shadow: 0 10px 30px #8b75b71a;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.area-secreta:not(.oculto) {
+  border-color: var(--lilas);
+  box-shadow: 0 10px 30px #8b75b733;
+}
+
+#desbloquear {
+  width: 100%;
+  margin-top: 8px;
+}
+
+#desbloquear:disabled {
+  opacity: 0.75;
+  cursor: default;
+}
+
+.revelacao:not(.oculto) {
+  animation: revelar-segredo 0.7s ease both;
+}
+
+@keyframes revelar-segredo {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Chuvinha de corações 💜 */
+.coracao-chuva {
+  position: fixed;
+  top: -50px;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  animation: cair-coracao var(--duracao) ease-in forwards;
+  animation-delay: var(--atraso);
+}
+
+@keyframes cair-coracao {
+  0% {
+    transform: translateY(-5vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coracao-chuva {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+  }
+}
+
+/* Chuvinha delicada de corações 💗 */
+.coracao-chuva {
+  position: fixed;
+  top: -40px;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  opacity: 0;
+  filter: drop-shadow(0 2px 4px #b49ad533);
+  animation: cair-coracao var(--duracao) ease-in forwards;
+  animation-delay: var(--atraso);
+  will-change: transform, opacity;
+}
+
+@keyframes cair-coracao {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(-15deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: translate3d(18px, 50vh, 0) rotate(12deg);
+    opacity: 0.8;
+  }
+
+  85% {
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translate3d(-12px, 115vh, 0) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+
+
+/* 💜 O último capítulo do Gabsium */
+
+.pergunta-final {
+  margin: 36px 0 18px;
+  padding: 30px 18px 26px;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    #fbf8ff 0%,
+    #f5efff 100%
+  );
+  border: 1px solid #e8ddf5;
+  border-radius: 22px;
+  box-shadow: 0 8px 28px #8b75b710;
+  animation: surgir-pergunta 1.2s ease both;
+}
+
+.novo-capitulo {
+  margin: 0 auto;
+  max-width: 280px;
+  color: #59466f;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.subtitulo-capitulo {
+  margin: 16px auto 0;
+  max-width: 260px;
+  color: #8c7c9c;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.pergunta-destaque {
+  margin: 38px 0 0;
+  color: #9b79c7;
+  font-size: clamp(30px, 8vw, 42px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+
+.detalhe-final {
+  display: block;
+  margin-top: 20px;
+  color: #b49ad5;
+  font-size: 20px;
+  letter-spacing: 7px;
+}
+
+@keyframes surgir-pergunta {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  }
+  
