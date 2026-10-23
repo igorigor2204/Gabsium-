@@ -101,6 +101,11 @@ function iniciarChuvaDeCoracoes() {
 
     document.body.appendChild(coracao);
 
+    coracao.style.position = "fixed";
+    coracao.style.top = "-40px";
+    coracao.style.zIndex = "99999";
+    coracao.style.pointerEvents = "none";
+    
     coracao.addEventListener("animationend", function () {
       coracao.remove();
     }, { once: true });
